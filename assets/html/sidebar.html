@@ -1,0 +1,11 @@
+<div ng-controller="SideBarCtrl">
+  <ul class="nav nav-pills nav-stacked">
+    <li ng-repeat="post in posts">
+      <a href="#/{{ post.category || 'post' }}/{{ post._id }}">{{ post.title }}</a>
+    </li>
+  </ul>
+  <hr>
+  <div ng-repeat="tag in tags">
+    <a href="#/tag/{{ tag.key }}">#{{ tag.key }} ({{ tag.value }})</a>
+  </div>
+</div>

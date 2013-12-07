@@ -10,6 +10,7 @@ module.exports = function (grunt) {
         'assets/js/**/*.js'
       ]
     },
+    // TODO: build stylesheets from LESS
     concat: {
       css: {
         files: {
@@ -21,7 +22,8 @@ module.exports = function (grunt) {
       vendor: {
         files: {
           'dist/js/vendor.js': [
-            'assets/vendor/*.js'
+            'assets/vendor/angular.js',
+            'assets/vendor/angular-*.js'
           ]
         }
       }
