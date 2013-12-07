@@ -1,0 +1,7 @@
+{
+  "auth": {
+    "user": "",
+    "pass": ""
+  },
+  "database_url": "http://localhost:5984/test_porter"
+}
