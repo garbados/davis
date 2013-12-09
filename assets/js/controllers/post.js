@@ -6,7 +6,8 @@ module.exports = function (app) {
         .get($routeParams.id)
         .success(function (post) {
           $scope.post = post;
-          if ($scope.post.category === 'blog') {
+          // TODO configure which pages you want to have comments
+          if (['blog'].indexOf($scope.post.category) !== -1) {
             $scope.comments = true;
           }
         })
