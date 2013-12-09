@@ -32,6 +32,7 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-couch": "~1.2.3",
     "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-less": "~0.8.3"
+    "grunt-contrib-less": "~0.8.3",
+    "grunt-contrib-cssmin": "~0.7.0"
   }
 }

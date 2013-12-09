@@ -10,25 +10,23 @@ module.exports = function (grunt) {
         'assets/js/**/*.js'
       ]
     },
-    // TODO make LESS work
     less: {
       dist: {
-        options: {
-          paths: ['assets/css']
-        },
         files: {
-          'bootswatch.css': 'assets/css/bootswatch.less'
+          'dist/css/bundle.css': 'assets/css/bootstrap.less'
         }
       }
     },
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'dist/css/',
+        src: ['*.css', '!*.min.css'],
+        dest: 'dist/css/',
+        ext: '.min.css'
+      }
+    },
     concat: {
-      css: {
-        files: {
-          'dist/css/bundle.css': [
-            'assets/css/*.css'
-          ]
-        }
-      },
       vendor: {
         files: {
           'dist/js/vendor.js': [
@@ -98,8 +96,8 @@ module.exports = function (grunt) {
         tasks: ['concat']
       },
       css: {
-        files: ['assets/css/*.css'],
-        tasks: ['concat:css']
+        files: ['assets/css/*.less'],
+        tasks: ['less', 'cssmin']
       },
       html: {
         files: ['assets/html/*.html'],
@@ -127,6 +125,8 @@ module.exports = function (grunt) {
     'jshint',
     'browserify',
     'uglify',
+    'less',
+    'cssmin',
     'copy'
   ]);
 
