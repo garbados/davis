@@ -1,3 +1,4 @@
 node_modules
 dist
 couchapp/_attachments
+app.json

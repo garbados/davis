@@ -19,10 +19,14 @@ module.exports = function (app) {
           }
         };
 
-        load(function (err, res) {
-          results = res;
+        load(function (res) {
+          results = res.rows.map(function (row) {
+            return row.doc;
+          }).sort(function (a, b) {
+            return b.created_at - a.created_at;
+          });
 
-          done(err, Paginator);
+          done(Paginator);
         });
       };
     }

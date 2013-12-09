@@ -10,7 +10,17 @@ module.exports = function (grunt) {
         'assets/js/**/*.js'
       ]
     },
-    // TODO: build stylesheets from LESS
+    // TODO make LESS work
+    less: {
+      dist: {
+        options: {
+          paths: ['assets/css']
+        },
+        files: {
+          'bootswatch.css': 'assets/css/bootswatch.less'
+        }
+      }
+    },
     concat: {
       css: {
         files: {
@@ -23,7 +33,8 @@ module.exports = function (grunt) {
         files: {
           'dist/js/vendor.js': [
             'assets/vendor/angular.js',
-            'assets/vendor/angular-*.js'
+            'assets/vendor/angular-*.js',
+            'assets/vendor/showdown.min.js'
           ]
         }
       }
@@ -114,10 +125,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'jshint',
-    'concat',
+    'browserify',
     'uglify',
-    'copy',
-    'browserify'
+    'copy'
   ]);
 
   grunt.registerTask('deploy', [
