@@ -1,7 +1,9 @@
 var app = angular.module('app', [
       'ngSanitize',
       'ngRoute',
-      'ngDisqus'
+      'ngDisqus',
+      'angulartics',
+      'angulartics.google.analytics'
     ]),
     plugins = [
       require('./services'),

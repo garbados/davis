@@ -1,7 +1,7 @@
 var plugins = [
   require('./routes'),
   require('./location'),
-  require('./values')
+  require('./disqus')
 ];
 
 module.exports = function (app) {
