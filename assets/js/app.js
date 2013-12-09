@@ -1,6 +1,7 @@
 var app = angular.module('app', [
       'ngSanitize',
-      'ngRoute'
+      'ngRoute',
+      'ngDisqus'
     ]),
     plugins = [
       require('./services'),

@@ -1,5 +1,7 @@
 var plugins = [
-  require('./routes')
+  require('./routes'),
+  require('./location'),
+  require('./values')
 ];
 
 module.exports = function (app) {

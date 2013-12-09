@@ -5,11 +5,11 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-12" ng-repeat="post in posts | orderBy:'created_at':true">
+    <div class="col-md-12" ng-repeat="post in posts | orderBy:'created_at':true | limitTo:limit">
       <div ng-include="'summary.html'"></div>
     </div>
   </div>
-  <div class="row" ng-show="hasMore ? hasMore() : false">
+  <div class="row" ng-show="limit < posts.length">
     <button class="btn btn-info" ng-click="next()">Load More</button>
   </div>
 </div>

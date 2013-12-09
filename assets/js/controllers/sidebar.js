@@ -28,15 +28,16 @@ module.exports = function (app) {
       }
 
       Posts
-        .category($scope.post.category)
+        .categories($scope.post.category)
         .success(function (res) {
-          var posts = res.rows.map(function (row) {
-            return row.doc;
-          });
+          var posts = res.rows
+            .map(function (row) {
+              return row.doc;
+            });
           $scope.posts = posts;
         });
 
-      if ($scope.post.tags.length) {
+      if ($scope.post.tags && $scope.post.tags.length) {
         getRelated($scope.post.tags, function (categories) {
           $scope.categories = categories;
         });
