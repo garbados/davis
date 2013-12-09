@@ -20,7 +20,7 @@
           <a ng-repeat="tag in post.tags.split(',')" href="#!/tag/{{ tag.trim() }}">#{{ tag.trim() }} </a>
         </span>
       </p>
-      <div disqus="post._id"></div>
+      <div ng-show="comments" disqus="post._id"></div>
   </div>
   <div class="col-md-3" ng-include="'sidebar.html'"></div>
 </div>

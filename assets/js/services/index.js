@@ -1,8 +1,7 @@
 var plugins = [
   require('./posts'),
   require('./markdown'),
-  require('./summary'),
-  require('./paginator')
+  require('./summary')
 ];
 
 module.exports = function (app) {

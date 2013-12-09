@@ -27,21 +27,26 @@ module.exports = function (app) {
           });
       }
 
-      Posts
-        .categories($scope.post.category)
-        .success(function (res) {
-          var posts = res.rows
-            .map(function (row) {
-              return row.doc;
-            });
-          $scope.posts = posts;
-        });
-
-      if ($scope.post.tags && $scope.post.tags.length) {
-        getRelated($scope.post.tags, function (categories) {
-          $scope.categories = categories;
-        });
+      function getRecent(category) {
+        Posts
+          .categories(category)
+          .success(function (res) {
+            var posts = res.rows
+              .map(function (row) {
+                return row.doc;
+              });
+            $scope.posts = posts;
+          });
       }
+
+      $scope.$watch('post', function (post) {
+        if (post) {
+          getRecent(post.category);
+          getRelated(post.tags, function (categories) {
+            $scope.categories = categories;
+          });
+        }
+      });
     }
   ]);
 };

@@ -6,6 +6,9 @@ module.exports = function (app) {
         .get($routeParams.id)
         .success(function (post) {
           $scope.post = post;
+          if ($scope.post.category === 'blog') {
+            $scope.comments = true;
+          }
         })
         .error(function (err) {
           if (err.status === 404) {
