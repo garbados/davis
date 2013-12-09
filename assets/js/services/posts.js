@@ -1,9 +1,7 @@
 module.exports = function (app) {
   app.factory('Posts', [
-    '$http',
-    function ($http) {
-      var url_root = 'http://localhost:5984/test_porter/_design/davis';
-
+    '$http', 'url_root',
+    function ($http, url_root) {
       function _call (url, key) {
         url = [url_root, url].join('/');
         if (key) {

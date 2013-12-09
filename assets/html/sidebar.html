@@ -1,6 +1,6 @@
 <div ng-controller="SideBarCtrl">
   <h3>Recent {{ post.category }}</h3>
-  <ul>
+  <ul class="nav nav-pills nav-stacked">
     <li ng-repeat="post in posts | orderBy:'created_at':true | limitTo:5 ">
       <a href="#!/{{ post.category || 'post' }}/{{ post._id }}" ng-bind-html="post.title"></a>
     </li>
@@ -8,7 +8,7 @@
   <div ng-repeat="(category, posts) in categories">
     <h3>Related {{ category }}</h3>
     <ul class="nav nav-pills nav-stacked">
-      <li ng-repeat="post in posts | orderBy:'created_at':true">
+      <li ng-repeat="post in posts | orderBy:'created_at':true | limitTo:5 ">
         <a href="#!/{{ post.category || 'post' }}/{{ post._id }}" ng-bind-html="post.title"></a>
       </li>
     </ul>
