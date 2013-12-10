@@ -122,11 +122,19 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('build', [
+    // douglas crawford thanks you
     'jshint',
+    // concat vendor files
+    'concat',
+    // build custom js
     'browserify',
-    'uglify',
+    // compile less files
     'less',
+    // minify css bundle
     'cssmin',
+    // minify js
+    'uglify',
+    // copy everything to the couchapp dir
     'copy'
   ]);
 
