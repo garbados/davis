@@ -7,9 +7,14 @@ module.exports = function (app) {
       Posts
         .categories($routeParams.category)
         .success(function (res) {
-          $scope.posts = res.rows.map(function (row) {
-            return row.doc;
-          });
+          if (res.rows.length) {
+            $scope.posts = res.rows.map(function (row) {
+              return row.doc;
+            }); 
+          } else {
+            // redirect to page if category is empty
+            $location.path('/post/' + $routeParams.category);
+          }
         })
         .error(function (err) {
           if (err.status === 404) {

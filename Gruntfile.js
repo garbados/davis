@@ -51,9 +51,8 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'assets/html/',
-            src: ['*.html'],
+            src: ['**'],
             dest: 'dist/',
-            filter: 'isFile'
           }
         ]
       },
@@ -125,21 +124,20 @@ module.exports = function (grunt) {
     // douglas crawford thanks you
     'jshint',
     // concat vendor files
-    'concat',
+    'concat', // TODO bower, yo
     // build custom js
-    'browserify',
+    'browserify', // TODO angular modules, dawg
     // compile less files
     'less',
     // minify css bundle
     'cssmin',
-    // minify js
-    'uglify',
     // copy everything to the couchapp dir
     'copy'
   ]);
 
   grunt.registerTask('deploy', [
     'build',
+    'uglify',
     'couch'
   ]);
 
@@ -150,6 +148,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('travis', [
-    'jshint'
+    'build'
   ]);
 };

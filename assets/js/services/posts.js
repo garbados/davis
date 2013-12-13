@@ -20,7 +20,7 @@ module.exports = function (app) {
               url: url,
               method: 'GET',
               params: {
-                key: '"' + key + '"',
+                key: JSON.stringify(key),
                 reduce: false,
                 include_docs: true
               }
