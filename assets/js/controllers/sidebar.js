@@ -29,6 +29,7 @@ module.exports = function (app) {
 
       function getRecent(category) {
         Posts
+          .search
           .categories(category)
           .success(function (res) {
             var posts = res.rows
@@ -42,9 +43,10 @@ module.exports = function (app) {
       $scope.$watch('post', function (post) {
         if (post) {
           getRecent(post.category);
-          getRelated(post.tags, function (categories) {
-            $scope.categories = categories;
-          });
+          // TODO implement search index
+          // getRelated(post.tags, function (categories) {
+          //   $scope.categories = categories;
+          // });
         }
       });
     }

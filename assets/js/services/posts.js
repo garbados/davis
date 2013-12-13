@@ -2,31 +2,17 @@ module.exports = function (app) {
   app.factory('Posts', [
     '$http', 'url_root',
     function ($http, url_root) {
-      function _call (url, key) {
-        url = [url_root, url].join('/');
-        if (key) {
-          if (typeof(key) === 'object') {
-            return $http({
-              url: url,
-              method: 'GET',
-              params: {
-                keys: key,
-                reduce: false,
-                include_docs: true
-              }
-            });
-          } else {
-            return $http({
-              url: url,
-              method: 'GET',
-              params: {
-                key: JSON.stringify(key),
-                reduce: false,
-                include_docs: true
-              }
-            });
-          }
-        } else if (url.indexOf('_rewrite') === -1) {
+      function get (id) {
+        var url = [url_root, '_rewrite', 'api', id].join('/');
+        return $http({
+          url: url,
+          method: 'GET'
+        });
+      }
+
+      var count = {
+        categories: function () {
+          var url = [url_root, '_view', 'categories'].join('/');
           return $http({
             url: url,
             method: 'GET',
@@ -34,33 +20,46 @@ module.exports = function (app) {
               group: true
             }
           });
-        } else {
+        },
+        tags: function () {
+          var url = [url_root, '_view', 'tags'].join('/');
           return $http({
             url: url,
-            method: 'GET'
+            method: 'GET',
+            params: {
+              group: true
+            }
           });
         }
-      }
+      };
 
-      function tags (tag) {
-        var url = '_view/tags';
-        return _call(url, tag);
-      }
-
-      function categories (category) {
-        var url = '_view/categories';
-        return _call(url, category);
-      }
-
-      function get (id) {
-        var url = ['_rewrite', 'api', id].join('/');
-        return _call(url);
-      }
+      var search = {
+        posts: function (text) {
+          // TODO use a _search index
+          throw "Not Implemented";
+        },
+        categories: function (category) {
+          var url = [url_root, '_view', 'categories'].join('/');
+          return $http({
+            url: url,
+            method: 'GET',
+            params: {
+              key: JSON.stringify(category),
+              reduce: false,
+              include_docs: true
+            }
+          });
+        },
+        tags: function (tags) {
+          // TODO use a _search index
+          throw "Not Implemented";
+        }
+      };
 
       return {
-        tags: tags,
-        categories: categories,
-        get: get
+        get: get,
+        count: count,
+        search: search
       };
     }
   ]);

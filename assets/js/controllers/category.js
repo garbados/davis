@@ -5,12 +5,14 @@ module.exports = function (app) {
       $scope.title = ['@', $routeParams.category].join('');
       
       Posts
+        .search
         .categories($routeParams.category)
         .success(function (res) {
           if (res.rows.length) {
-            $scope.posts = res.rows.map(function (row) {
-              return row.doc;
-            }); 
+            $scope.posts = res.rows
+              .map(function (row) {
+                return row.doc;
+              }); 
           } else {
             // redirect to page if category is empty
             $location.path('/post/' + $routeParams.category);

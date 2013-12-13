@@ -21,7 +21,8 @@
         </span>
       </p>
       <div ng-show="comments" disqus="post._id"></div>
+    </div>
+    <div ng-show="sidebar" class="col-md-3" ng-include="'sidebar_explicit.html'"></div>
+    <div ng-hide="sidebar" class="col-md-3" ng-include="'sidebar.html'"></div>
   </div>
-  <div ng-show="sidebar" class="col-md-3" ng-include="'sidebar_explicit.html'"></div>
-  <div ng-hide="sidebar" class="col-md-3" ng-include="'sidebar.html'"></div>
 </div>

@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" ng-init="news = (post.text | link)">
       <!-- TODO title links to .news-meta -->
       <h1>
-        <a href="#!/{{ post.category || 'post' }}/{{ post._id }}" ng-bind-html="post.title"></a>
+        <a href="{{ news.url }}" ng-bind-html="post.title"></a>
       </h1>
-      <div ng-bind-html="post.text | summary | markdown"></div>
+      <p>- {{ news.host }}</p>
       <p ng-show="post.tags.length">
         <span ng-repeat="tag in post.tags.split(',')">
           <a ng-show="tag" href="#!/tag/{{ tag.trim() }}">#{{ tag.trim() }}</a>

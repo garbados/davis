@@ -3,6 +3,7 @@ module.exports = function (app) {
     '$scope', 'Posts',
     function ($scope, Posts) {
       Posts
+        .count
         .categories()
         .success(function (res) {
           var categories = res.rows.map(function (row) {

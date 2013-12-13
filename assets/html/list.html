@@ -1,11 +1,11 @@
 <div class="row jumbotron" ng-show="title">
-  <div class="col-md-11 col-md-offset-1">
+  <div class="col-md-12">
     <h1>{{ title }}</h1>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-12" ng-repeat="post in posts | orderBy:'created_at':true | limitTo:limit">
+    <div ng-repeat="post in posts | orderBy:'created_at':true | limitTo:limit">
       <div ng-include="'post.html'" ng-init="detail = 'summary'"></div>
     </div>
   </div>

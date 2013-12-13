@@ -99,7 +99,7 @@ module.exports = function (grunt) {
         tasks: ['less', 'cssmin']
       },
       html: {
-        files: ['assets/html/*.html'],
+        files: ['assets/html/**'],
         tasks: ['copy']
       }
     },
