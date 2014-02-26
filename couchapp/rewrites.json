@@ -4,6 +4,9 @@
     "to": "index.html"
   }, {
     "from": "/api/*",
+    "to": "../*"
+  }, {
+    "from": "/docs/*",
     "to": "../../*"
   }, {
     "from": "*",
