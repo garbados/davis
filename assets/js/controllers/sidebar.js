@@ -2,22 +2,16 @@ module.exports = function (app) {
   app.controller('SideBarCtrl', [
     '$scope', 'Posts',
     function ($scope, Posts) {
-      function getRelated (tags, done) {
-        Posts
-          .tags(tags)
-          .success(function (res) {
-            var results = {};
+      function getRelated (post, done) {
+        var query = 'tags:(' + post.tags.join(' OR ') + ') AND category:' + JSON.stringify(post.category);
 
-            res.rows
-              .map(function (row) {
-                return row.doc;
-              })
-              .forEach(function (doc) {
-                if (Object.keys(results).indexOf(doc.category) === -1) {
-                  results[doc.category] = {};
-                }
-                results[doc.category][doc._id] = doc;
-              });
+        Posts
+          .search
+          .posts(query)
+          .success(function (res) {
+            var results = res.rows.map(function (row) {
+              return row.doc;
+            });
 
             done(results);
           })
@@ -27,26 +21,25 @@ module.exports = function (app) {
           });
       }
 
-      function getRecent(category) {
+      function getRecent(category, done) {
         Posts
           .search
           .categories(category)
           .success(function (res) {
-            var posts = res.rows
-              .map(function (row) {
-                return row.doc;
-              });
-            $scope.posts = posts;
+            done(res.rows.map(function (row) {
+              return row.doc;
+            }));
           });
       }
 
       $scope.$watch('post', function (post) {
         if (post) {
-          getRecent(post.category);
-          // TODO implement search index
-          // getRelated(post.tags, function (categories) {
-          //   $scope.categories = categories;
-          // });
+          getRecent(post.category, function (docs) {
+            $scope.recent = docs;
+          });
+          getRelated(post, function (docs) {
+            $scope.related = docs;
+          });
         }
       });
     }

@@ -2,10 +2,16 @@ module.exports = function (app) {
   app.controller('TagCtrl', [
     '$scope', 'Posts', '$routeParams', '$location',
     function ($scope, Posts, $routeParams, $location) {
-      $scope.title = ['#', $routeParams.tag].join('');
+      var tags = $routeParams.tag.split(',').map(function (tag) {
+        return tag.trim();
+      });
+
+      $scope.title = tags.map(function (tag) {
+        return '#' + tag;
+      }).join(', ');
       
       Posts
-        .tags($routeParams.tag)
+        .tags(tags)
         .success(function (res) {
           $scope.posts = res.rows.map(function (row) {
             return row.doc;

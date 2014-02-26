@@ -9,6 +9,10 @@ module.exports = function (app) {
       .when('/404', {
         templateUrl: 'notfound.html'
       })
+      .when('/search', {
+        controller: 'SearchCtrl',
+        templateUrl: 'list.html'
+      })
       .when('/tag/:tag/', {
         controller: 'TagCtrl',
         templateUrl: 'list.html'

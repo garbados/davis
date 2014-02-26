@@ -1,11 +1,1 @@
-<div ng-switch="post.category" ng-init="detail = detail || 'post'">
-  <div ng-switch-when="events">
-    <div ng-include="'types/events/' + detail + '.html'"></div>
-  </div>
-  <div ng-switch-when="news">
-    <div ng-include="'types/news/' + detail + '.html'"></div>
-  </div>
-  <div ng-switch-default>
-    <div ng-include="'types/posts/' + detail + '.html'"></div>
-  </div>
-</div>
+<div ng-include="'types/' + post.type + '/' + (detail || 'post') + '.html'"></div>
