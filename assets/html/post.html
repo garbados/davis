@@ -1,7 +1,12 @@
 <div class="container">
-  <p><a ng-href="#/{{ post.category }}">/{{ post.category }}</a></p>
-  <div class="col-md-9">
+  <div ng-hide="detail">
+    <p><a ng-href="#!/{{ post.category }}">/{{ post.category }}</a></p>
+    <div class="col-md-9">
+      <div ng-include="'types/' + post.type + '/' + (detail || 'post') + '.html'"></div>
+    </div>
+    <div class="col-md-3" ng-include="'sidebar.html'"></div>
+  </div>
+  <div ng-show="detail" class="col-md-12">
     <div ng-include="'types/' + post.type + '/' + (detail || 'post') + '.html'"></div>
   </div>
-  <div class="col-md-3" ng-include="'sidebar.html'"></div>
 </div>
