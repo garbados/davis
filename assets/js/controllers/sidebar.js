@@ -3,22 +3,26 @@ module.exports = function (app) {
     '$scope', 'Posts',
     function ($scope, Posts) {
       function getRelated (post, done) {
-        var query = 'tags:(' + post.tags.join(' OR ') + ') AND category:' + JSON.stringify(post.category);
+        if (post.tags.length && post.category) {
+          var query = 'tags:(' + post.tags.join(' OR ') + ') AND category:' + JSON.stringify(post.category);
 
-        Posts
-          .search
-          .posts(query)
-          .success(function (res) {
-            var results = res.rows.map(function (row) {
-              return row.doc;
-            });
+          Posts
+            .search
+            .posts(query)
+            .success(function (res) {
+              var results = res.rows.map(function (row) {
+                return row.doc;
+              });
 
-            done(results);
-          })
-          .error(function (err) {
-            console.trace(err);
-            throw err;
-          });
+              done(results);
+            })
+            .error(function (err) {
+              console.trace(err);
+              throw err;
+            }); 
+        } else {
+          done([]);
+        }
       }
 
       function getRecent(category, done) {
