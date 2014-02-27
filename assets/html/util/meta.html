@@ -1,0 +1,5 @@
+<p>
+  <a ng-href="#!/{{ post.category }}">@{{ post.category }}</a>
+  <span ng-show="post.tags"> || </span>
+  <a ng-repeat="tag in post.tags" ng-href="#/tag/{{ tag }}">#{{ tag }}</a>
+</p>

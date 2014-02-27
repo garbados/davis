@@ -3,7 +3,14 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#!/">Davis</a>
     </div>
-    <!-- TODO add search bar -->
+    
+    <form class="navbar-form navbar-left" role="search" ng-submit="search(query)">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" ng-model="query">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
     <ul class="nav navbar-nav pull-right">
       <li ng-repeat="category in categories">
         <a href="#!/{{ category }}">{{ category | uppercase }}</a>

@@ -20,11 +20,6 @@ module.exports = function (app) {
             console.trace(err); 
           }
         });
-
-      $scope.limit = 5;
-      $scope.next = function () {
-        $scope.limit += 5;
-      };
     }
   ]);
 };

@@ -1,0 +1,9 @@
+<header>
+  <a ng-href="{{ post.href }}" ng-show="post.href">
+    <h1 ng-bind-html="post[title]"></h1>
+  </a>
+  <a ng-href="#!/{{ post.category }}/{{ post._id }}" ng-hide="post.href">
+    <h1 ng-bind-html="post[title]"></h1>
+  </a>
+  <p ng-show="author">By {{ author }} on {{ post.created_at | date }}</p>
+</header>

@@ -4,12 +4,17 @@
       <h1>{{ title }}</h1>
     </div>
   </div>
-  <div class="row">
-    <div ng-repeat="post in posts | orderBy:'created_at':true | limitTo:limit">
-      <div ng-include="'post.html'" ng-init="detail = 'summary'"></div>
+  <div ng-show="posts">
+    <div class="row">
+      <div ng-repeat="post in posts | orderBy:'created_at':true | limitTo:limit">
+        <div ng-include="'post.html'" ng-init="detail = 'summary'"></div>
+      </div>
+    </div>
+    <div class="row" ng-show="limit < posts.length" ng-init="limit = 5">
+      <button class="btn btn-info" ng-click="limit = limit + 5">Load More</button>
     </div>
   </div>
-  <div class="row" ng-show="limit < posts.length">
-    <button class="btn btn-info" ng-click="next()">Load More</button>
+  <div ng-hide="posts">
+    <h1 class="text-center">No results :(</h1>
   </div>
 </div>

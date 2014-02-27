@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-12">
-    <header>{{ post.title }}</header>
+    <div ng-include="'util/title.html'" ng-init="title = 'title'"></div>
     <p>Starts: {{ post.start_date }} @ {{ post.start_time }}</p>
     <p>Ends: {{ post.end_date }} @ {{ post.end_time }}</p>
+    <div ng-include="'util/meta.html'"></div>
   </div>
 </div>

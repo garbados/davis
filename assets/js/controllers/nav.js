@@ -1,7 +1,7 @@
 module.exports = function (app) {
   app.controller('NavCtrl', [
-    '$scope', 'Posts',
-    function ($scope, Posts) {
+    '$scope', 'Posts', '$location',
+    function ($scope, Posts, $location) {
       Posts
         .count
         .categories()
@@ -11,6 +11,10 @@ module.exports = function (app) {
           });
           $scope.categories = categories;
         });
+
+      $scope.search = function (query) {
+        $location.path('search').search({q: query});
+      };
     }
   ]);
 };
