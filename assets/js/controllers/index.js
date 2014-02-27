@@ -4,7 +4,8 @@ var plugins = [
   require('./tag'),
   require('./post'),
   require('./nav'),
-  require('./sidebar')
+  require('./sidebar'),
+  require('./search')
 ];
 
 module.exports = function (app) {
