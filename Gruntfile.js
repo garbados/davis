@@ -88,19 +88,19 @@ module.exports = function (grunt) {
       },
       scripts: {
         files: ['assets/js/**/*.js'],
-        tasks: ['jshint', 'browserify'],
+        tasks: ['deploy'],
       },
       vendor: {
         files: ['assets/vendor/*.js'],
-        tasks: ['concat']
+        tasks: ['deploy']
       },
       css: {
         files: ['assets/css/*.less'],
-        tasks: ['less', 'cssmin']
+        tasks: ['deploy']
       },
       html: {
         files: ['assets/html/**'],
-        tasks: ['copy']
+        tasks: ['deploy']
       }
     },
     'couch-compile': {
