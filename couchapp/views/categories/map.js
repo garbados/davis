@@ -1,5 +1,5 @@
 function (doc) {
-  if (doc.type === 'porter') {
+  if (doc.category) {
     emit(doc.category, null);
   }
 }

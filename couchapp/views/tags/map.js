@@ -1,5 +1,5 @@
 function (doc) {
-  if (doc.type === 'porter') {
+  if (doc.tags) {
     doc
       .tags
       .split(',')
