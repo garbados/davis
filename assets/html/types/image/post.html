@@ -1,1 +1,13 @@
-TODO
+<div class="row">
+  <div class="col-md-12">
+    <header>{{ post.title }}</header>
+  </div>
+  <img ng-src="{{ post.src }}" ng-title="{{ post.title }}">
+  <p><a ng-href="{{ post.src }}">Source</a></p>
+  <p>Posted by {{ post.author }} on {{ post.created_at | date }}</p>
+  <p>
+    <a ng-href="#/{{ post.category }}">@{{ post.category }}</a>
+    <span> || </span>
+    <a ng-repeat="tag in post.tags" ng-href="#/tag/{{ tag }}">#{{ tag }}</a>
+  </p>
+</div>

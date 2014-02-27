@@ -1,1 +1,13 @@
-TODO
+<div class="row">
+  <div class="col-md-12">
+    <header>{{ post.title }}</header>
+    <p>Starts: {{ post.start_date }} @ {{ post.start_time }}</p>
+    <p>Ends: {{ post.end_date }} @ {{ post.end_time }}</p>
+  </div>
+  <p>{{ post.text }}</p>
+  <p>
+    <a ng-href="#/{{ post.category }}">@{{ post.category }}</a>
+    <span> || </span>
+    <a ng-repeat="tag in post.tags" ng-href="#/tag/{{ tag }}">#{{ tag }}</a>
+  </p>
+</div>

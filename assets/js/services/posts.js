@@ -12,7 +12,7 @@ module.exports = function (app) {
 
       var count = {
         categories: function () {
-          var url = [url_root, 'api', '_view', 'categories'].join('/');
+          var url = [url_root, '_view', 'categories'].join('/');
           return $http({
             url: url,
             method: 'GET',
@@ -22,7 +22,7 @@ module.exports = function (app) {
           });
         },
         tags: function () {
-          var url = [url_root, 'api', '_view', 'tags'].join('/');
+          var url = [url_root, '_view', 'tags'].join('/');
           return $http({
             url: url,
             method: 'GET',
@@ -35,7 +35,7 @@ module.exports = function (app) {
 
       var search = {
         types: function (type) {
-          var url = [url_root, 'api', '_view', 'types'].join('/');
+          var url = [url_root, '_view', 'types'].join('/');
           return $http({
             url: url,
             method: 'GET',
@@ -47,7 +47,7 @@ module.exports = function (app) {
           });
         },
         posts: function (query) {
-          var url = [url_root, 'api', '_search', 'posts'].join('/');
+          var url = [url_root, '_search', 'posts'].join('/');
           return $http({
             url: url,
             method: 'GET',
@@ -58,7 +58,7 @@ module.exports = function (app) {
           });
         },
         categories: function (category) {
-          var url = [url_root, 'api', '_view', 'categories'].join('/');
+          var url = [url_root, '_view', 'categories'].join('/');
           return $http({
             url: url,
             method: 'GET',
@@ -72,9 +72,9 @@ module.exports = function (app) {
         tags: function (tags) {
           if (tag.split) {
             // if tags is a string, make it an array
-            tags = [tags]
+            tags = [tags];
           }
-          var url = [url_root, 'api', '_search', 'posts'].join('/');
+          var url = [url_root, '_search', 'posts'].join('/');
           var tag_query = tags.map(function (tag) {
             return 'tag:"' + tag + '"';
           }).join(' AND ');
