@@ -3,6 +3,7 @@ module.exports = function (app) {
     '$scope', 'Posts', '$location',
     function ($scope, Posts, $location) {
       var query = $location.search().q;
+      $scope.title = "Search: " + query;
 
       Posts
         .search
