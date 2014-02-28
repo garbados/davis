@@ -1,3 +1,28 @@
-<div ng-controller="ListCtrl" ng-init="list()">
-  <div ng-include="'list.html'" ng-init="title = 'Recent Posts'"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Welcome to your site!</h1>
+      <p>Use the navbar to navigate your content.</p>
+    </div>
+  </div>
 </div>
+
+<!-- You can use a loop like this to re-use pre-existing content -->
+<!-- Repeat for any pages you want to include on the homepage -->
+<!--
+<div ng-repeat="id in ['pricing', 'contact-us']" class="container">
+  <div ng-controller="GetCtrl" ng-init="get(id)" class="row">
+    <div class="col-md-12 text-center">
+      <h1>{{ post.title }}</h1>
+      <p ng-bind-html="post.text"></p>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- Or use ListCtrl to get lists of posts using search :D -->
+<!--
+<div ng-controller="ListCtrl" ng-init="list('author:Max Thayer')">
+  <div ng-include="'list.html'" ng-init="title = 'Posts by Max Thayer'"></div>
+</div>
+-->
