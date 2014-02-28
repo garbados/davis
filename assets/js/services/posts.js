@@ -10,6 +10,18 @@ module.exports = function (app) {
         });
       }
 
+      function all () {
+        var url = [url_root, '_view', 'types'].join('/');
+        return $http({
+          url: url,
+          method: 'GET',
+          params: {
+            reduce: false,
+            include_docs: true
+          }
+        });
+      }
+
       var count = {
         categories: function () {
           var url = [url_root, '_view', 'categories'].join('/');
@@ -93,7 +105,8 @@ module.exports = function (app) {
       return {
         get: get,
         count: count,
-        search: search
+        search: search,
+        all: all
       };
     }
   ]);

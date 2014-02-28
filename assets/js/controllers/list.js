@@ -3,14 +3,19 @@ module.exports = function (app) {
     '$scope', 'Posts',
     function ($scope, Posts) {
       $scope.list = function list (query) {
-        Posts
-          .search
-          .posts(query)
-          .success(function (res) {
-            $scope.posts = res.rows.map(function (row) {
-              return row.doc;
-            });
+        var promise;
+
+        if (query) {
+          promise = Posts.search.posts(query);
+        } else {
+          promise = Posts.all();
+        }
+        
+        promise.success(function (res) {
+          $scope.posts = res.rows.map(function (row) {
+            return row.doc;
           });
+        }); 
       };
     }
   ]);
