@@ -15,12 +15,12 @@ module.exports = function (app) {
               }); 
           } else {
             // redirect to page if category is empty
-            $location.path('/post/' + $routeParams.category);
+            $location.path('/post/' + $routeParams.category).replace();
           }
         })
         .error(function (err) {
           if (err.status === 404) {
-            $location.path('/404');
+            $location.path('/404').replace();
           } else {
             console.trace(err); 
           }

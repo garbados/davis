@@ -19,7 +19,7 @@ module.exports = function (app) {
         })
         .error(function (err) {
           if (err.status === 404) {
-            $location.path('/404');
+            $location.path('/404').replace();
           } else {
             console.trace(err); 
           }
