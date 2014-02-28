@@ -5,7 +5,8 @@ var plugins = [
   require('./post'),
   require('./nav'),
   require('./sidebar'),
-  require('./search')
+  require('./search'),
+  require('./list')
 ];
 
 module.exports = function (app) {
